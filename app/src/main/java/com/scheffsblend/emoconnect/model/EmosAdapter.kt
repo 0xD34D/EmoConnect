@@ -15,7 +15,8 @@ class EmosAdapter(private val onClick: (BleDevice) -> Unit) :
     /* ViewHolder for EMO, takes in the inflated view and the onClick behavior. */
     class EmosViewHolder(itemView: View, val onClick: (BleDevice) -> Unit) :
         RecyclerView.ViewHolder(itemView) {
-        private val emoTextView: TextView = itemView.findViewById(R.id.emo_text)
+        private val emoName: TextView = itemView.findViewById(R.id.emo_name)
+        private val emoMacAddr: TextView = itemView.findViewById(R.id.emo_mac)
         private var currentEmo: BleDevice? = null
 
         init {
@@ -30,7 +31,8 @@ class EmosAdapter(private val onClick: (BleDevice) -> Unit) :
         fun bind(emo: BleDevice) {
             currentEmo = emo
 
-            emoTextView.text = emo.name
+            emoName.text = emo.name
+            emoMacAddr.text = emo.mac
         }
     }
 

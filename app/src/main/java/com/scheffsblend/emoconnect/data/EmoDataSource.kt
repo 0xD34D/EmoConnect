@@ -40,6 +40,14 @@ class DataSource() {
         return null
     }
 
+    /* Returns emo given a MAC address. */
+    fun getEmoForMacAddress(macAddr: String): BleDevice? {
+        emosLiveData.value?.let { emos ->
+            return emos.firstOrNull{ it.mac == macAddr}
+        }
+        return null
+    }
+
     fun getEmosList(): LiveData<List<BleDevice>> {
         return emosLiveData
     }
